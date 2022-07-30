@@ -9,6 +9,8 @@ defmodule ProjetoWeb.Router do
     pipe_through :api
 
     get "/pessoa", PessoaController, :buscarPessoa
+
+    get "/conta", ContaController, :buscarConta
   end
 
   # Enables LiveDashboard only for development

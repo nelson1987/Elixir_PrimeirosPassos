@@ -3,7 +3,7 @@ defmodule ProjetoWeb.PessoaView do
 
   def render("find.json", %{pessoa: pessoa}) do
     %{
-      pessoa: pessoa
+      data: pessoa
     }
   end
 end
