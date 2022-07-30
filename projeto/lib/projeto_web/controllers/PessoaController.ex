@@ -13,7 +13,7 @@ defmodule ProjetoWeb.PessoaController do
   def handle_response({:ok, pessoa}, conn) do
     conn
     |> put_status(:ok)
-    |> render("create.json", pessoa: pessoa)
+    |> render("find.json", pessoa: pessoa)
   end
 
   def handle_response({:error, message}, conn) do
