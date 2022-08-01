@@ -2,11 +2,7 @@ defmodule ProjetoWeb.ContaController do
   use ProjetoWeb, :controller
 
   alias Projeto.Conta
-
-<<<<<<< Updated upstream
-  def buscarConta(conn, params) do
-    "ok"
-=======
+  
   use PhoenixSwagger
   swagger_path(:buscarConta) do
     get("/api/conta")
@@ -25,24 +21,24 @@ defmodule ProjetoWeb.ContaController do
     #   company_id :string, :query, "The company id"
     # end
   end
+  
   def buscarConta(conn, %{"success" => success}) do
     IO.inspect(label: "[Inicio] [GET]/conta :::")
     success
->>>>>>> Stashed changes
     |> Conta.create()
     |> handle_response(conn)
     # |> IO.inspect(label: "[Termino] [GET]/conta :::")
   end
 
-  def handle_response({:ok, conta}, conn) do
+  defp handle_response({:ok, conta}, conn) do
     conn
     |> put_status(:ok)
     |> render("find.json", conta: conta)
   end
 
-  def handle_response({:error, message}, conn) do
+  defp handle_response({:error, message}, conn) do
     conn
-    |> put_status(:bad_request)
+    |> put_status(:not_found)
     |> json(%{message: message})
   end
 
