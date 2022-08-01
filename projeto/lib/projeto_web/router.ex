@@ -8,11 +8,26 @@ defmodule ProjetoWeb.Router do
   scope "/api", ProjetoWeb do
     pipe_through :api
 
-    get "/pessoa", PessoaController, :buscarPessoa
-
+    post "/pessoa", PessoaController, :buscarPessoa
     get "/conta", ContaController, :buscarConta
   end
 
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :projeto, swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      schemes: ["http", "https", "ws", "wss"],
+      info: %{
+        version: "1.0",
+        title: "Minha Primeira Api no Swagger usando Elixir.",
+        description: "API feita em Elixir com Swagger",
+      },
+      consumes: ["application/json"],
+      produces: ["application/json"]
+    }
+  end
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -27,6 +42,7 @@ defmodule ProjetoWeb.Router do
       pipe_through [:fetch_session, :protect_from_forgery]
 
       live_dashboard "/dashboard", metrics: ProjetoWeb.Telemetry
+
     end
   end
 

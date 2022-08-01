@@ -23,6 +23,13 @@ config :projeto, ProjetoWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :projeto, Projeto.Mailer, adapter: Swoosh.Adapters.Local
 
+config :projeto, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: ProjetoWeb.Router,
+      endpoint: ProjetoWeb.Endpoint
+    ]
+  }
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
@@ -43,7 +50,7 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
+config :phoenix_swagger, json_library: Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

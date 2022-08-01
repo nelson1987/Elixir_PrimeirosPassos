@@ -1,6 +1,6 @@
 defmodule Projeto.Pessoa do
 
-  def create("ok") do
+  def create("success") do
     {:ok, %{name: "Bruce Wayne", nick: "Batman"}}
   end
 
