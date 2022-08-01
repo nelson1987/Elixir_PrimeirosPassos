@@ -50,7 +50,7 @@ defmodule ProjetoWeb.PessoaController do
 
           properties do
             id(:integer, "User ID")
-            name(:string, "User name", required: true,)
+            name(:string, "User name", required: true)
             email(:string, "Email address", format: :email, required: true)
             inserted_at(:string, "Creation timestamp", format: :datetime)
             updated_at(:string, "Update timestamp", format: :datetime)
@@ -87,7 +87,6 @@ defmodule ProjetoWeb.PessoaController do
     success
     |> Pessoa.create()
     |> handle_response(conn)
-    #|> IO.inspect(label: "[Termino] [GET]/Pessoa :::")
   end
 
   defp handle_response({:ok, pessoa}, conn) do

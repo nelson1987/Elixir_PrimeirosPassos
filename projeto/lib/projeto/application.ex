@@ -5,6 +5,8 @@ defmodule Projeto.Application do
 
   use Application
 
+  alias ProjetoWeb.Endpoint
+
   @impl true
   def start(_type, _args) do
     children = [
@@ -23,12 +25,11 @@ defmodule Projeto.Application do
     opts = [strategy: :one_for_one, name: Projeto.Supervisor]
     Supervisor.start_link(children, opts)
   end
-
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    ProjetoWeb.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end

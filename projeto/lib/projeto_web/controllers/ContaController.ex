@@ -21,7 +21,6 @@ defmodule ProjetoWeb.ContaController do
     #   company_id :string, :query, "The company id"
     # end
   end
-
   def buscarConta(conn, %{"success" => success}) do
     success
     |> Conta.create()
