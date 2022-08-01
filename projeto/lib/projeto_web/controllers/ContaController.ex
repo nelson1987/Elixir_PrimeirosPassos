@@ -2,7 +2,7 @@ defmodule ProjetoWeb.ContaController do
   use ProjetoWeb, :controller
 
   alias Projeto.Conta
-  
+
   use PhoenixSwagger
   swagger_path(:buscarConta) do
     get("/api/conta")
@@ -21,9 +21,8 @@ defmodule ProjetoWeb.ContaController do
     #   company_id :string, :query, "The company id"
     # end
   end
-  
+
   def buscarConta(conn, %{"success" => success}) do
-    IO.inspect(label: "[Inicio] [GET]/conta :::")
     success
     |> Conta.create()
     |> handle_response(conn)
