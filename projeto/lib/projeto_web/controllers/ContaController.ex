@@ -3,8 +3,8 @@ defmodule ProjetoWeb.ContaController do
 
   alias Projeto.Conta
 
-  def buscarConta(conn, params) do
-    "ok"
+  def buscarConta(conn, %{"success" => success}) do
+    success
     |> Conta.create()
     |> handle_response(conn)
     # |> IO.inspect(label: "[Termino] [GET]/conta :::")
@@ -18,7 +18,7 @@ defmodule ProjetoWeb.ContaController do
 
   def handle_response({:error, message}, conn) do
     conn
-    |> put_status(:bad_request)
+    |> put_status(:not_found)
     |> json(%{message: message})
   end
 

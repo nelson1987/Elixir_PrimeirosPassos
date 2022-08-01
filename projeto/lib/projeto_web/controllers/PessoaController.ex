@@ -18,7 +18,7 @@ defmodule ProjetoWeb.PessoaController do
 
   def handle_response({:error, message}, conn) do
     conn
-    |> put_status(:bad_request)
+    |> put_status(:not_found)
     |> json(%{message: message})
   end
 
